@@ -28,8 +28,8 @@ include("API/connect.php");
           </li>
           <li class="nav-item active">
         </ul>
-        <a href="register.php"><button type="button" class="btn btn-light" id="register">Sign In</button></a>   
-        <a href="" class="btn btn-outline-light my-2 my-lg-0" role="button">Sign Up</a>
+        <a href="#"><button type="button" class="btn btn-light" id="register">Sign In</button></a>   
+        <a href="#" class="btn btn-outline-light my-2 my-lg-0" role="button">Sign Up</a>
       </div>
     </nav> 
 <div 
@@ -38,6 +38,7 @@ include("API/connect.php");
           "background-image: url('');
           height: 100vh;" 
       >
+      <div class = "p-2">
       <?php
         $ingredient = $_POST['ingredient'];
 
@@ -68,7 +69,8 @@ include("API/connect.php");
         }
     ?>
     </div>   
-    </div> 
+    </div>
+    </div>
 
     <!-- DO NOT TOUCH THE SCRIPT FILES BELOW THIS LINE -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
