@@ -11,8 +11,10 @@ include("API/connect.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+
     <title>Clean Plate</title>
 </head>
 <body>
@@ -28,17 +30,17 @@ include("API/connect.php");
           </li>
           <li class="nav-item active">
         </ul>
-        <a href="register.php"><button type="button" class="btn btn-light" id="register">Sign In</button></a>   
-        <a href="" class="btn btn-outline-light my-2 my-lg-0" role="button">Sign Up</a>
+        <a href="#"><button type="button" class="btn btn-light" id="register">Sign In</button></a>   
+        <a href="#" class="btn btn-outline-light my-2 my-lg-0" role="button">Sign Up</a>
       </div>
     </nav> 
 <div 
         class="bg-image"
            style=
-          "background-image: url('veganFood.png');
+          "background-image: url('veganDark.png');
           height: 100vh;" 
       >
-        <div class="p-5">
+        <div class="container-fluid p-5">
         <p class="lead" style="font-size:24px; color:white"; >The food we eat contributes a certain amount of greenhouse gas to our atmosphere, which lead to hotter temperatures. Different types of food emit varying amounts of greenhouse gases. Beef is one of the types of food that contribute a lot, while bananas contribute very little. To see more about the greenhouse gas emissions from different types of food, visit the link: <a href="https://ourworldindata.org/grapher/food-emissions-supply-chain">https://ourworldindata.org/grapher/food-emissions-supply-chain</a> </p>
         <p class="lead" style="font-size:30px; color:white">Look for greener alternatives to your favorite dishes. Search below to start today!</p>
         
@@ -52,8 +54,8 @@ include("API/connect.php");
 
         
 
-        <h3 style="color:white">Got a recipe that you want to share?</h3>
-        <a class="btn btn-success btn-lg" href="addRecipe.php" role="button">Add New Recipe</a>
+        <!-- <h3 style="color:white">Got a recipe that you want to share?</h3>
+        <a class="btn btn-success btn-lg" href="addRecipe.php" role="button">Add New Recipe</a> -->
     </div>   
     </div> 
 
