@@ -16,7 +16,7 @@ include("API/connect.php");
     <title>ClassADMU</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg navbar-dark bg-success px-5 ">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-success px-5">
       <a class="navbar-brand" href="index.php">Clean Plate</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,8 @@ include("API/connect.php");
           </li>
           <li class="nav-item active">
         </ul>
-        <a href="register.php"><button type="button" class="btn btn-light" id="register">Sign In</button></a>   
-        <a href="" class="btn btn-outline-light my-2 my-lg-0" role="button">Sign Up</a>
+        <a href="#"><button type="button" class="btn btn-light" id="register">Sign In</button></a>   
+        <a href="#" class="btn btn-outline-light my-2 my-lg-0" role="button">Sign Up</a>
       </div>
     </nav> 
 <div 
@@ -38,9 +38,30 @@ include("API/connect.php");
           "background-image: url('');
           height: 100vh;" 
       >
+      <div class = "p-5">
     <?php
     $id = $_GET['id'];
+    $sum = 0.0;
+    $cheeseburger = 4.35;
+    $percent = 0.0;
+
     $sql = "SELECT * FROM dish WHERE dishId = $id";
+    $sql2 = "SELECT * FROM recipe_ingredients JOIN dish ON recipe_ingredients.Dish_dishId = dish.dishId JOIN ingredients ON recipe_ingredients.Ingredients_ingredientsId = ingredients.ingredientsId JOIN category ON ingredients.Category_categoryId = category.categoryId WHERE dish.dishId = $id";
+
+    $carbonresult = $conn->query($sql2);
+    if ($carbonresult->num_rows > 0)
+    {
+        while($carbonrow = $carbonresult->fetch_assoc())
+        {
+            $sum+=(($carbonrow['ingredientsAmount']*$carbonrow['carbonEmission'])/1000);
+        }
+        $percent = ($sum/$cheeseburger)*100.0;
+    }
+    else
+    {
+        echo "<h3>Something wrong has occurred FAAAAAAAAAAK</h3>";
+    }
+    
     $dishresult = $conn->query($sql);
     if ($dishresult->num_rows > 0)
     {
@@ -48,6 +69,8 @@ include("API/connect.php");
         {
             echo "<h1>".$dishrow['dishName']."</h1>";
             echo "<p>".$dishrow['recipeDescription']."</p>";
+            echo "<p> Total Carbon Emission: " . $sum . " kgCO2</p>";
+            echo "<p> This dish's carbon footprint is <b>" . $percent . "%</b> of a cheeseburger's.";
             echo "<h3>Ingredients:</h3>";
         }
     }
@@ -56,7 +79,6 @@ include("API/connect.php");
         echo "<h3>Something wrong has occurred FAAAAAAAAAAK</h3>";
     }
 
-    $sql2 = "SELECT * FROM recipe_ingredients JOIN dish ON recipe_ingredients.Dish_dishId = dish.dishId JOIN ingredients ON recipe_ingredients.Ingredients_ingredientsId = ingredients.ingredientsId WHERE dish.dishId = $id";
     $ingredientresult = $conn->query($sql2);
     if ($ingredientresult->num_rows > 0)
     {
@@ -83,7 +105,6 @@ include("API/connect.php");
         echo "<h3>Something wrong has occurred FAAAAAAAAAAK</h3>";
     }
     
-    $sql = "SELECT * FROM dish WHERE dishId = $id";
     $dishresult = $conn->query($sql);
     if ($dishresult->num_rows > 0)
     {
@@ -98,6 +119,7 @@ include("API/connect.php");
         echo "<h3>Something wrong has occurred FAAAAAAAAAAK</h3>";
     }
     ?>
+    </div>
     </div>   
     </div> 
 
