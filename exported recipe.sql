@@ -60,7 +60,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `hackathon`.`Recipe_Ingredients` (
   `recipeIngredientsId` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `ingredientsUnit` VARCHAR(45) NOT NULL,
-  `ingredientsAmount` INT UNSIGNED NOT NULL,
+  `ingredientsAmount` DOUBLE UNSIGNED NOT NULL,
   `Ingredients_ingredientsId` INT UNSIGNED NOT NULL,
   `Dish_dishId` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`recipeIngredientsId`),
