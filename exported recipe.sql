@@ -5,11 +5,11 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema hackathon
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema hackathon
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `hackathon` DEFAULT CHARACTER SET utf8 ;
 USE `hackathon` ;
@@ -27,12 +27,30 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `hackathon`.`Category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `hackathon`.`Category` (
+  `categoryId` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `carbonEmission` DOUBLE UNSIGNED NOT NULL,
+  `categoryName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`categoryId`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `hackathon`.`Ingredients`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hackathon`.`Ingredients` (
   `ingredientsId` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `ingredientsName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ingredientsId`))
+  `Category_categoryId` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`ingredientsId`),
+  INDEX `fk_Ingredients_Category1_idx` (`Category_categoryId` ASC) USING BTREE,
+  CONSTRAINT `fk_Ingredients_Category1`
+    FOREIGN KEY (`Category_categoryId`)
+    REFERENCES `hackathon`.`Category` (`categoryId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
